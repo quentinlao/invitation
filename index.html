@@ -342,10 +342,11 @@
         launchPetalsLoop();
         setTimeout(() => {
           envelope.classList.add("animate-slide-down-out");
+          flap.style.transition = "none"; // évite le saut sur Safari
           flap.classList.add("flap-slide-down");
           setTimeout(() => {
-            launchFireworksAnimation();
-          }, 1100);
+            flap.style.transition = "transform 0.7s cubic-bezier(0.77, 0, 0.18, 1)";
+          }, 1000); // remet la transition après animation
         }, 700);
       };
 
@@ -365,16 +366,31 @@
       envelopeContainer.addEventListener("keydown", handleEnvelopeKeyDown);
 
       // Observe envelope open state to animate flap
-      const observer = new MutationObserver(() => {
-        if (envelopeContainer.classList.contains("open")) {
-          flap.style.transform = "rotateX(-140deg)";
-          flap.style.transitionDelay = "0s";
-        } else {
-          flap.style.transform = "rotateX(0deg)";
-          flap.style.transitionDelay = "";
-        }
+      let lastClass = envelopeContainer.className;
+
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === "class") {
+            const currentClass = envelopeContainer.className;
+            if (currentClass !== lastClass) {
+              const isOpenClass = currentClass.includes("open");
+              if (isOpenClass && !flap.classList.contains("flap-slide-down")) {
+                flap.style.transform = "rotateX(-140deg)";
+                flap.style.transitionDelay = "0s";
+              } else {
+                flap.style.transform = "rotateX(0deg)";
+                flap.style.transitionDelay = "";
+              }
+              lastClass = currentClass;
+            }
+          }
+        });
       });
-      observer.observe(envelopeContainer, { attributes: true, attributeFilter: ["class"] });
+
+      observer.observe(envelopeContainer, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
 
       /**
        * Renders the guest list from the URL parameter "invitation".
