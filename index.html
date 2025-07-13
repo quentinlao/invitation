@@ -1,352 +1,366 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chinese Wedding Envelope</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'chinese': ['"Noto Serif SC"', 'serif'],
-            'kuai': ['"ZCOOL KuaiLe"', 'cursive'],
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chinese Wedding Envelope</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Fira+Sans:wght@400;700&family=Meow+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              meow: ['"Meow Script"', "cursive"],
+              chinese: ['"Noto Serif SC"', "serif"],
+              kuai: ['"ZCOOL KuaiLe"', "cursive"],
+              futura: ["Futura", '"Fira Sans"', "Arial", "sans-serif"],
+            },
+            keyframes: {
+              "slide-down-out": {
+                "0%": { transform: "translateY(0)" },
+                "100%": { transform: "translateY(900px)" },
+              },
+            },
+            animation: {
+              "slide-down-out": "slide-down-out 1.1s cubic-bezier(.77,0,.18,1) forwards",
+            },
           },
-          keyframes: {
-            'slide-down-out': {
-              '0%': { transform: 'translateY(0)' },
-              '100%': { transform: 'translateY(900px)' }
-            }
-          },
-          animation: {
-            'slide-down-out': 'slide-down-out 1.1s cubic-bezier(.77,0,.18,1) forwards'
-          }
+        },
+      };
+    </script>
+    <style>
+      @keyframes flap-slide-down {
+        0% {
+          transform: rotateX(-140deg) translateY(0);
+        }
+        100% {
+          transform: rotateX(-140deg) translateY(-1100px);
         }
       }
-    }
-  </script>
-  <style>
-    @keyframes flap-slide-down {
-      0% {
-        transform: rotateX(-140deg) translateY(0);
+      .flap.flap-slide-down {
+        animation: flap-slide-down 1s cubic-bezier(0.77, 0, 0.18, 1) forwards;
       }
-      100% {
-        transform: rotateX(-140deg) translateY(-1100px);
-      }
-    }
-    .flap.flap-slide-down {
-      animation: flap-slide-down 1s cubic-bezier(.77,0,.18,1) forwards;
-    }
-  </style>
-</head>
-<body
-  class="min-h-screen flex items-center justify-center bg-[#f5f0eb] bg-center bg-no-repeat bg-cover"
-  style="background-image: url('./background.png');"
->
-  <!-- Petals container -->
-  <div class="fixed inset-0 pointer-events-none z-50 petals-container" aria-hidden="true"></div>
-  <!-- Fireworks container -->
-  <div class="fixed inset-0 pointer-events-none z-[60] confetti-container" aria-hidden="true"></div>
-  <div class="container flex items-center justify-center min-h-screen">
-    <div
-      class="envelope-container relative flex flex-col items-center justify-center focus:outline-none"
-      tabindex="0"
-      aria-label="Ouvrir l'enveloppe d'invitation"
-      role="button"
-    >
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-[#f5f0eb] bg-center bg-no-repeat bg-cover"
+    style="background-image: url('./background.png')"
+  >
+    <!-- Petals container -->
+    <div class="fixed inset-0 pointer-events-none z-50 petals-container" aria-hidden="true"></div>
+    <!-- Fireworks container -->
+    <div class="fixed inset-0 pointer-events-none z-[60] confetti-container" aria-hidden="true"></div>
+    <div class="container flex items-center justify-center min-h-screen">
       <div
-        id="flap"
-        class="flap absolute top-0 left-0 w-full h-[60px] rounded-t-[4px] z-50 shadow-[0_6px_16px_rgba(0,0,0,0.10)]"
-        style="background: linear-gradient(180deg, #921718 80%, #921718 100%); transform-origin: top center; transform: rotateX(0deg); transition: transform 0.7s cubic-bezier(.77,0,.18,1);"
-      ></div>
-      <div class="wrapper relative w-[95vw] max-w-[440px] h-[150vw] min-h-[540px] sm:w-[440px] sm:h-[700px] sm:min-h-0">
+        class="envelope-container relative flex flex-col items-center justify-center focus:outline-none"
+        tabindex="0"
+        aria-label="Ouvrir l'enveloppe d'invitation"
+        role="button"
+      >
         <div
-          id="envelope"
-          class="envelope flex items-center justify-center bg-[url('./background_envelope.jpg')] bg-cover bg-center relative w-[95vw] max-w-[440px] h-[150vw] min-h-[540px] sm:w-[440px] sm:h-[700px] sm:min-h-0 rounded-[4px] shadow-lg overflow-hidden z-50"
-          aria-label="Enveloppe hongbao traditionnelle"
+          id="flap"
+          class="flap absolute top-0 left-0 w-full h-[60px] rounded-t-[4px] z-50 shadow-[0_6px_16px_rgba(0,0,0,0.10)]"
+          style="
+            background: linear-gradient(180deg, #921718 80%, #921718 100%);
+            transform-origin: top center;
+            transform: rotateX(0deg);
+            transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+          "
+        ></div>
+        <div
+          class="wrapper relative w-[95vw] max-w-[440px] h-[150vw] min-h-[540px] sm:w-[440px] sm:h-[700px] sm:min-h-0"
         >
-          <div class="absolute inset-0 bg-black/30"></div>
-          <div class="relative flex items-center justify-center w-full h-full">
-            <!-- Decorative centered circle -->
-            <div
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-white/80 rounded-full z-0"
-              aria-hidden="true"
-            ></div>
-            <!-- Centered text content in the circle -->
-            <div id="invitation-block" class="relative z-10 flex flex-col items-center justify-center w-full h-full">
-              <div class="flex flex-col items-center justify-center text-center gap-2">
-                <h2 class="text-xl sm:text-2xl font-bold text-[#8b0000] mb-2 tracking-wide">Pour</h2>
-                <ul id="guests-list" class="space-y-1"></ul>
+          <div
+            id="envelope"
+            class="envelope flex items-center justify-center bg-[url('./enveloppe.png')] bg-cover bg-center relative w-[95vw] max-w-[440px] h-[150vw] min-h-[540px] sm:w-[440px] sm:h-[700px] sm:min-h-0 rounded-[4px] shadow-lg overflow-hidden z-50"
+            aria-label="Enveloppe hongbao traditionnelle"
+          >
+            <div class="relative flex items-center justify-center w-full h-full">
+              <!-- Centered text content in the circle -->
+              <div id="invitation-block" class="relative z-10 flex flex-col items-center justify-center w-full h-full">
+                <!-- ...existing code... -->
+                <div class="font-meow text-[30px] flex flex-col items-center justify-center text-center">
+                  <h2 class="font-meow text-[20px] sm:text-2xl font-bold text-[#CE412D] tracking-wide">Pour</h2>
+                  <div id="guests-list" class="w-[272px] text-[30px]" style="transform: rotate(-2.88deg)"></div>
+                </div>
+                <!-- ...existing code... -->
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#f8f5ee] rounded-[4px] shadow-lg w-[90vw] max-w-[420px] min-h-[180px] px-2 py-4 sm:bottom-0 sm:top-auto sm:-translate-y-0 sm:w-[420px] sm:min-h-[660px] sm:px-8 sm:py-10 z-30 flex flex-col justify-center bg-[url('https://www.transparenttextures.com/patterns/fibers.png')] bg-repeat bg-center"
-          aria-label="Carte d'invitation style papier"
-        >
-          <div class="symbol text-2xl text-[#8b0000] text-right">囍</div>
-          <h1 class="text-2xl sm:text-3xl font-bold text-[#d4af37] m-0">TONY <span class="font-normal font-[cursive]">and</span></h1>
-          <h2 class="text-xl sm:text-2xl font-bold text-[#8b0000] my-2">AMANDA</h2>
-          <p class="text-base text-[#333]">We request the pleasure of your company on our wedding day</p>
-          <div class="date text-lg sm:text-2xl font-bold my-4">JULY 10, 2025</div>
-          <div class="info text-base text-[#333]">
-            <p>
-              <strong>SAVE THE DATE</strong><br />
-              The Mansion Hotel<br />
-              123 Shelby Drive, New York<br />
-              Cocktail at 6PM<br />
-              Banquet at 7PM
-            </p>
-            <p class="mt-6">
-              RSVP by Oct 10 to Robin at +1 234 567 8910
-            </p>
-            <p class="mt-8 text-center">
-              <a
-                href="https://www.leetchi.com/c/tony-amanda"
-                target="_blank"
-                rel="noopener noreferrer"
-                role="button"
-                tabindex="0"
-                aria-label="Ouvrir la cagnotte de mariage dans un nouvel onglet"
-                class="inline-block bg-[#8b0000] text-[#ffd700] font-bold text-lg px-8 py-3 rounded-full border border-[#ffd700] shadow focus:outline-none focus:ring-2 focus:ring-[#ffd700] focus:ring-offset-2 transition-colors duration-200 hover:bg-[#a80000] hover:text-[#ffd700]"
+          <!-- ...existing code... -->
+          <!-- ...existing code... -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col justify-center items-center"
+            aria-label="Carte d'invitation"
+            style="width: 440px; height: 700px"
+          >
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col justify-center items-center w-[90vw] h-[140vw] max-w-[440px] max-h-[700px] sm:w-[440px] sm:h-[700px]"
+              aria-label="Carte d'invitation"
+            >
+              <div
+                class="relative flex flex-col justify-center items-center w-full h-full bg-cover bg-center rounded-lg shadow-lg"
+                style="background-image: url('invitation_background.png')"
               >
-                🎁 Notre cagnotte de mariage
-              </a>
-            </p>
+                <!-- SVG par dessus le fond -->
+                <img
+                  src="texte_invitation.svg"
+                  alt="Texte d'invitation"
+                  class="absolute left-1/2 -translate-x-1/2 object-contain pointer-events-none"
+                  style="top: 15vw; width: 70vw; max-width: 304px; height: auto; z-index: 10"
+                />
+                <!-- Texte par dessus le SVG -->
+                <div
+                  class="absolute left-1/2 -translate-x-1/2 w-[60vw] max-w-[258px] text-left text-[#871521] font-futura bottom-[24vw] sm:bottom-[135px] text-[3vw] sm:text-[12px]"
+                  style="z-index: 20"
+                >
+                  🎁 Envie de faire plaisir ?<br />
+                  Ça tombe bien : on a créé une cagnotte !
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- ...existing code... --><!-- ...existing code... -->
         </div>
       </div>
     </div>
-  </div>
-  <script>
-    // DOM Elements
-    const envelopeContainer = document.querySelector('.envelope-container');
-    const envelope = document.getElementById('envelope');
-    const flap = document.getElementById('flap');
-    const petalsContainer = document.querySelector('.petals-container');
-    const confettiContainer = document.querySelector('.confetti-container');
+    <script>
+      // DOM Elements
+      const envelopeContainer = document.querySelector(".envelope-container");
+      const envelope = document.getElementById("envelope");
+      const flap = document.getElementById("flap");
+      const petalsContainer = document.querySelector(".petals-container");
+      const confettiContainer = document.querySelector(".confetti-container");
 
-    // State
-    let isOpen = false;
-    let isPetalLooping = false;
+      // State
+      let isOpen = false;
+      let isPetalLooping = false;
 
-    // Petal Animation Constants
-    const PETAL_COUNT = 24;
-    const PETAL_COLORS = [
-      "bg-pink-100",
-      "bg-pink-200",
-      "bg-rose-100"
-    ];
+      // Petal Animation Constants
+      const PETAL_COUNT = 24;
+      const PETAL_COLORS = ["bg-pink-100", "bg-pink-200", "bg-rose-100"];
 
-    // Firework Animation Constants
-    const FIREWORK_BURST_COUNT = 10;
-    const PARTICLES_PER_BURST = 16;
-    const FIREWORK_COLORS = [
-      "#fbbf24", "#e11d48", "#f472b6", "#38bdf8", "#34d399", "#f59e42"
-    ];
+      // Firework Animation Constants
+      const FIREWORK_BURST_COUNT = 10;
+      const PARTICLES_PER_BURST = 16;
+      const FIREWORK_COLORS = ["#fbbf24", "#e11d48", "#f472b6", "#38bdf8", "#34d399", "#f59e42"];
 
-    // Utility: Random item from array
-    const getRandomArrayItem = arr => arr[Math.floor(Math.random() * arr.length)];
+      // Utility: Random item from array
+      const getRandomArrayItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-    // --------- PETALS ---------
-    const createPetalElement = () => {
-      const colorClass = getRandomArrayItem(PETAL_COLORS);
-      const rotate = Math.floor(Math.random() * 360);
-      const scale = 0.6 + Math.random() * 0.3;
-      const opacity = 0.5 + Math.random() * 0.3;
-      const petal = document.createElement("div");
-      petal.className = `absolute top-0 left-0 w-2 h-3 ${colorClass} rounded-full shadow pointer-events-none`;
-      petal.style.opacity = opacity;
-      petal.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
-      return petal;
-    };
-
-    const animatePetal = petal => {
-      const startLeft = Math.random() * 100;
-      const endLeft = startLeft + (Math.random() - 0.5) * 8;
-      const duration = 3500 + Math.random() * 1500;
-      const swayAmplitude = 5 + Math.random() * 6;
-      const swayFrequency = 1 + Math.random() * 2;
-      const rotateStart = Math.random() * 360;
-      const rotateEnd = rotateStart + (Math.random() - 0.5) * 60;
-      let startTime = null;
-      const scale = petal.style.transform.match(/scale\(([^)]+)\)/)[1];
-
-      const animate = timestamp => {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        const top = progress * 105;
-        const sway = Math.sin(progress * Math.PI * swayFrequency) * swayAmplitude;
-        const left = startLeft + ((endLeft - startLeft) * progress) + (sway / window.innerWidth * 100);
-        const rotate = rotateStart + (rotateEnd - rotateStart) * progress;
-
-        petal.style.top = `${top}vh`;
-        petal.style.left = `${left}vw`;
+      // --------- PETALS ---------
+      const createPetalElement = () => {
+        const colorClass = getRandomArrayItem(PETAL_COLORS);
+        const rotate = Math.floor(Math.random() * 360);
+        const scale = 0.6 + Math.random() * 0.3;
+        const opacity = 0.5 + Math.random() * 0.3;
+        const petal = document.createElement("div");
+        petal.className = `absolute top-0 left-0 w-2 h-3 ${colorClass} rounded-full shadow pointer-events-none`;
+        petal.style.opacity = opacity;
         petal.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          petal.style.opacity = 0;
-          setTimeout(() => petal.remove(), 200);
-        }
+        return petal;
       };
 
-      requestAnimationFrame(animate);
-    };
+      const animatePetal = (petal) => {
+        const startLeft = Math.random() * 100;
+        const endLeft = startLeft + (Math.random() - 0.5) * 8;
+        const duration = 3500 + Math.random() * 1500;
+        const swayAmplitude = 5 + Math.random() * 6;
+        const swayFrequency = 1 + Math.random() * 2;
+        const rotateStart = Math.random() * 360;
+        const rotateEnd = rotateStart + (Math.random() - 0.5) * 60;
+        let startTime = null;
+        const scale = petal.style.transform.match(/scale\(([^)]+)\)/)[1];
 
-    const launchPetalsLoop = () => {
-      if (!isPetalLooping) return;
-      for (let i = 0; i < PETAL_COUNT; i++) {
-        setTimeout(() => {
-          const petal = createPetalElement();
-          petalsContainer.appendChild(petal);
-          animatePetal(petal);
-        }, i * 60 + Math.random() * 40);
-      }
-      setTimeout(launchPetalsLoop, 2000);
-    };
+        const animate = (timestamp) => {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
 
-    // --------- FIREWORKS ---------
-    const createFireworkParticle = color => {
-      const size = 12 + Math.random() * 8;
-      const div = document.createElement("div");
-      div.className = "absolute pointer-events-none";
-      div.style.width = `${size}px`;
-      div.style.height = `${size}px`;
-      div.innerHTML = `
+          const top = progress * 105;
+          const sway = Math.sin(progress * Math.PI * swayFrequency) * swayAmplitude;
+          const left = startLeft + (endLeft - startLeft) * progress + (sway / window.innerWidth) * 100;
+          const rotate = rotateStart + (rotateEnd - rotateStart) * progress;
+
+          petal.style.top = `${top}vh`;
+          petal.style.left = `${left}vw`;
+          petal.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            petal.style.opacity = 0;
+            setTimeout(() => petal.remove(), 200);
+          }
+        };
+
+        requestAnimationFrame(animate);
+      };
+
+      const launchPetalsLoop = () => {
+        if (!isPetalLooping) return;
+        for (let i = 0; i < PETAL_COUNT; i++) {
+          setTimeout(() => {
+            const petal = createPetalElement();
+            petalsContainer.appendChild(petal);
+            animatePetal(petal);
+          }, i * 60 + Math.random() * 40);
+        }
+        setTimeout(launchPetalsLoop, 2000);
+      };
+
+      // --------- FIREWORKS ---------
+      const createFireworkParticle = (color) => {
+        const size = 12 + Math.random() * 8;
+        const div = document.createElement("div");
+        div.className = "absolute pointer-events-none";
+        div.style.width = `${size}px`;
+        div.style.height = `${size}px`;
+        div.innerHTML = `
         <svg viewBox="0 0 32 32" class="w-full h-full" aria-hidden="true">
           <circle cx="16" cy="16" r="7" fill="${color}" fill-opacity="0.85"/>
         </svg>
       `;
-      return div;
-    };
+        return div;
+      };
 
-    const launchFireworksAnimation = () => {
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
-      for (let b = 0; b < FIREWORK_BURST_COUNT; b++) {
-        const burstX = 40 + Math.random() * (screenWidth - 80);
-        const burstY = 0.10 * screenHeight + Math.random() * (0.20 * screenHeight);
+      const launchFireworksAnimation = () => {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        for (let b = 0; b < FIREWORK_BURST_COUNT; b++) {
+          const burstX = 40 + Math.random() * (screenWidth - 80);
+          const burstY = 0.1 * screenHeight + Math.random() * (0.2 * screenHeight);
 
+          setTimeout(() => {
+            for (let i = 0; i < PARTICLES_PER_BURST; i++) {
+              const angle = (2 * Math.PI * i) / PARTICLES_PER_BURST;
+              const distance = 80 + Math.random() * 60;
+              const color = getRandomArrayItem(FIREWORK_COLORS);
+              const particle = createFireworkParticle(color);
+
+              particle.style.left = `${burstX}px`;
+              particle.style.top = `${burstY}px`;
+              confettiContainer.appendChild(particle);
+
+              const finalX = burstX + Math.cos(angle) * distance;
+              const finalY = burstY + Math.sin(angle) * distance;
+
+              let startTime = null;
+              const duration = 950 + Math.random() * 350;
+              const rotate = Math.random() * 360;
+
+              const animate = (timestamp) => {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                const currentX = burstX + (finalX - burstX) * progress;
+                const currentY = burstY + (finalY - burstY) * progress;
+                particle.style.left = `${currentX}px`;
+                particle.style.top = `${currentY}px`;
+                particle.style.transform = `rotate(${rotate}deg) scale(${1 - 0.4 * progress})`;
+                particle.style.opacity = 1 - progress;
+
+                if (progress < 1) {
+                  requestAnimationFrame(animate);
+                } else {
+                  particle.remove();
+                }
+              };
+              requestAnimationFrame(animate);
+            }
+          }, b * 250 + Math.random() * 120);
+        }
+      };
+
+      // --------- ENVELOPE OPEN HANDLER ---------
+      const handleOpenEnvelope = () => {
+        if (isOpen) return;
+        envelopeContainer.classList.add("open");
+        isOpen = true;
+        isPetalLooping = true;
+        launchPetalsLoop();
         setTimeout(() => {
-          for (let i = 0; i < PARTICLES_PER_BURST; i++) {
-            const angle = (2 * Math.PI * i) / PARTICLES_PER_BURST;
-            const distance = 80 + Math.random() * 60;
-            const color = getRandomArrayItem(FIREWORK_COLORS);
-            const particle = createFireworkParticle(color);
+          envelope.classList.add("animate-slide-down-out");
+          flap.classList.add("flap-slide-down");
+          setTimeout(() => {
+            launchFireworksAnimation();
+          }, 1100);
+        }, 700);
+      };
 
-            particle.style.left = `${burstX}px`;
-            particle.style.top = `${burstY}px`;
-            confettiContainer.appendChild(particle);
+      const handleEnvelopeKeyDown = (event) => {
+        if (isOpen) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          handleOpenEnvelope();
+        }
+      };
 
-            const finalX = burstX + Math.cos(angle) * distance;
-            const finalY = burstY + Math.sin(angle) * distance;
+      envelopeContainer.addEventListener("click", handleOpenEnvelope);
+      envelopeContainer.addEventListener("keydown", handleEnvelopeKeyDown);
 
-            let startTime = null;
-            const duration = 950 + Math.random() * 350;
-            const rotate = Math.random() * 360;
+      // Flap open transform (moved from CSS to JS for Tailwind-only static)
+      const observer = new MutationObserver(() => {
+        if (envelopeContainer.classList.contains("open")) {
+          flap.style.transform = "rotateX(-140deg)";
+          flap.style.transitionDelay = "0s";
+        } else {
+          flap.style.transform = "rotateX(0deg)";
+          flap.style.transitionDelay = "";
+        }
+      });
+      observer.observe(envelopeContainer, { attributes: true, attributeFilter: ["class"] });
 
-            const animate = timestamp => {
-              if (!startTime) startTime = timestamp;
-              const elapsed = timestamp - startTime;
-              const progress = Math.min(elapsed / duration, 1);
+      // --------- INVITATION GUESTS DYNAMIC RENDERING ---------
+      const renderGuestList = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const invitationParam = urlParams.get("invitation");
+        const guestsList = document.getElementById("guests-list");
+        const invitationBlock = document.getElementById("invitation-block");
 
-              const currentX = burstX + (finalX - burstX) * progress;
-              const currentY = burstY + (finalY - burstY) * progress;
-              particle.style.left = `${currentX}px`;
-              particle.style.top = `${currentY}px`;
-              particle.style.transform = `rotate(${rotate}deg) scale(${1 - 0.4 * progress})`;
-              particle.style.opacity = 1 - progress;
+        if (!invitationParam) {
+          invitationBlock.style.display = "none";
+          return;
+        }
 
-              if (progress < 1) {
-                requestAnimationFrame(animate);
-              } else {
-                particle.remove();
-              }
-            };
-            requestAnimationFrame(animate);
-          }
-        }, b * 250 + Math.random() * 120);
-      }
-    };
+        const guests = invitationParam
+          .split(",")
+          .map((name) => name.trim())
+          .filter(Boolean);
 
-    // --------- ENVELOPE OPEN HANDLER ---------
-    const handleOpenEnvelope = () => {
-      if (isOpen) return;
-      envelopeContainer.classList.add('open');
-      isOpen = true;
-      isPetalLooping = true;
-      launchPetalsLoop();
-      setTimeout(() => {
-        envelope.classList.add('animate-slide-down-out');
-        flap.classList.add('flap-slide-down');
-        setTimeout(() => {
-          launchFireworksAnimation();
-        }, 1100);
-      }, 700);
-    };
+        if (guests.length === 0) {
+          invitationBlock.style.display = "none";
+          return;
+        }
 
-    const handleEnvelopeKeyDown = event => {
-      if (isOpen) return;
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        handleOpenEnvelope();
-      }
-    };
+        guestsList.innerHTML = guests
+          .map((guest, idx) => {
+            // Ajoute une virgule après chaque prénom sauf le dernier et l'avant-dernier
+            if (guests.length === 1) {
+              return `<span class="inline font-medium text-[#CE412D]">${guest}</span>`;
+            } else if (idx === guests.length - 1) {
+              // Dernier prénom, précédé de "et"
+              return `<span class="inline font-medium text-[#CE412D]">et ${guest}</span>`;
+            } else if (idx === guests.length - 2) {
+              // Avant-dernier prénom, suivi d'un espace
+              return `<span class="inline font-medium text-[#CE412D]">${guest} </span>`;
+            } else {
+              // Prénoms du début, suivis d'une virgule
+              return `<span class="inline font-medium text-[#CE412D]">${guest}, </span>`;
+            }
+          })
+          .join("");
+        invitationBlock.style.display = "";
+      };
 
-    envelopeContainer.addEventListener('click', handleOpenEnvelope);
-    envelopeContainer.addEventListener('keydown', handleEnvelopeKeyDown);
-
-    // Flap open transform (moved from CSS to JS for Tailwind-only static)
-    const observer = new MutationObserver(() => {
-      if (envelopeContainer.classList.contains('open')) {
-        flap.style.transform = 'rotateX(-140deg)';
-        flap.style.transitionDelay = '0s';
-      } else {
-        flap.style.transform = 'rotateX(0deg)';
-        flap.style.transitionDelay = '';
-      }
-    });
-    observer.observe(envelopeContainer, { attributes: true, attributeFilter: ['class'] });
-
-    // --------- INVITATION GUESTS DYNAMIC RENDERING ---------
-    const renderGuestList = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const invitationParam = urlParams.get('invitation');
-      const guestsList = document.getElementById('guests-list');
-      const invitationBlock = document.getElementById('invitation-block');
-
-      if (!invitationParam) {
-        invitationBlock.style.display = 'none';
-        return;
-      }
-
-      const guests = invitationParam
-        .split(',')
-        .map(name => name.trim())
-        .filter(Boolean);
-
-      if (guests.length === 0) {
-        invitationBlock.style.display = 'none';
-        return;
-      }
-
-      guestsList.innerHTML = guests
-        .map(
-          guest =>
-            `<li class="text-lg sm:text-xl font-medium text-gray-800">${guest}</li>`
-        )
-        .join('');
-      invitationBlock.style.display = '';
-    };
-
-    renderGuestList();
-  </script>
-</body>
+      renderGuestList();
+    </script>
+  </body>
 </html>
