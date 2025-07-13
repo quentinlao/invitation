@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chinese Wedding Envelope</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Fira+Sans:wght@400;700&family=Meow+Script&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Meow+Script&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      // Tailwind custom configuration
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
               meow: ['"Meow Script"', "cursive"],
-              chinese: ['"Noto Serif SC"', "serif"],
-              kuai: ['"ZCOOL KuaiLe"', "cursive"],
-              futura: ["Futura", '"Fira Sans"', "Arial", "sans-serif"],
+              futura: ["Futura", "Arial", "sans-serif"],
             },
             keyframes: {
               "slide-down-out": {
@@ -52,9 +46,7 @@
     class="min-h-screen flex items-center justify-center bg-[#f5f0eb] bg-center bg-no-repeat bg-cover"
     style="background-image: url('./background.png')"
   >
-    <!-- Petals container -->
     <div class="fixed inset-0 pointer-events-none z-50 petals-container" aria-hidden="true"></div>
-    <!-- Fireworks container -->
     <div class="fixed inset-0 pointer-events-none z-[60] confetti-container" aria-hidden="true"></div>
     <div class="container flex items-center justify-center min-h-screen">
       <div
@@ -67,7 +59,7 @@
           id="flap"
           class="flap absolute top-0 left-0 w-full h-[60px] rounded-t-[4px] z-50 shadow-[0_6px_16px_rgba(0,0,0,0.10)]"
           style="
-            background: linear-gradient(180deg, #921718 80%, #921718 100%);
+            background: linear-gradient(180deg, #871521 80%, #921718 100%);
             transform-origin: top center;
             transform: rotateX(0deg);
             transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
@@ -82,55 +74,94 @@
             aria-label="Enveloppe hongbao traditionnelle"
           >
             <div class="relative flex items-center justify-center w-full h-full">
-              <!-- Centered text content in the circle -->
               <div id="invitation-block" class="relative z-10 flex flex-col items-center justify-center w-full h-full">
-                <!-- ...existing code... -->
-                <div class="font-meow text-[30px] flex flex-col items-center justify-center text-center">
-                  <h2 class="font-meow text-[20px] sm:text-2xl font-bold text-[#CE412D] tracking-wide">Pour</h2>
-                  <div id="guests-list" class="w-[272px] text-[30px]" style="transform: rotate(-2.88deg)"></div>
+                <div class="flex flex-col items-center justify-center">
+                  <!-- Guests card -->
+                  <div
+                    class="bg-white rounded-[15px] px-6 py-2 shadow font-meow text-[#CE412D] text-[30px] inline-block max-w-[322px]"
+                    style="
+                      display: inline-block;
+                      transform: rotate(-2.88deg);
+                      margin-top: 8px;
+                      margin-bottom: 8px;
+                      min-width: 80px;
+                    "
+                  >
+                    <div class="text-[20px] sm:text-2xl font-bold tracking-wide mb-1 text-center w-full">Pour</div>
+                    <div id="guests-list" class="w-auto text-[30px] break-words text-center"></div>
+                  </div>
                 </div>
-                <!-- ...existing code... -->
               </div>
             </div>
           </div>
-          <!-- ...existing code... -->
-          <!-- ...existing code... -->
           <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col justify-center items-center"
-            aria-label="Carte d'invitation"
-            style="width: 440px; height: 700px"
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-[95vw] max-w-[440px] h-[150vw] min-h-[540px] sm:w-[440px] sm:h-[700px] sm:min-h-0"
+            style="z-index: 1; background: url('./invitation_background.png') center/cover no-repeat"
           >
+            <!-- Main invitation card -->
             <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col justify-center items-center w-[90vw] h-[140vw] max-w-[440px] max-h-[700px] sm:w-[440px] sm:h-[700px]"
-              aria-label="Carte d'invitation"
+              class="relative flex flex-col items-start bg-white rounded-[9px] shadow-lg px-4 pt-12 text-left w-[303px] h-[380px] sm:h-[431px]"
+              style="z-index: 10"
             >
-              <div
-                class="relative flex flex-col justify-center items-center w-full h-full bg-cover bg-center rounded-lg shadow-lg"
-                style="background-image: url('invitation_background.png')"
+              <img
+                src="ruban.svg"
+                alt="Ruban décoratif"
+                style="width: 303px; height: auto; position: absolute; top: -18px; left: 0; z-index: 20"
+                draggable="false"
+              />
+              <h2
+                class="font-meow text-[#CE412D]"
+                style="
+                  font-size: 42px;
+                  transform: rotate(-2.76deg);
+                  margin-top: 32px;
+                  white-space: nowrap;
+                  overflow: visible;
+                  position: relative;
+                  z-index: 30;
+                "
               >
-                <!-- SVG par dessus le fond -->
-                <img
-                  src="texte_invitation.svg"
-                  alt="Texte d'invitation"
-                  class="absolute left-1/2 -translate-x-1/2 object-contain pointer-events-none"
-                  style="top: 15vw; width: 70vw; max-width: 304px; height: auto; z-index: 10"
-                />
-                <!-- Texte par dessus le SVG -->
-                <div
-                  class="absolute left-1/2 -translate-x-1/2 w-[60vw] max-w-[258px] text-left text-[#871521] font-futura bottom-[24vw] sm:bottom-[135px] text-[3vw] sm:text-[12px]"
-                  style="z-index: 20"
+                Charlène & Quentin
+              </h2>
+              <div class="text-[#871521] sm:text-[17px] text-[15px] font-futura leading-[1.2] sm:leading-normal">
+                sont heureux de vous annoncer<br />
+                à leur mariage et vous convient à célébrer ce moment unique à leurs côtés
+              </div>
+              <span
+                class="leading-[1.2] sm:leading-normal block text-[#871521] font-futura text-[17px] select-none"
+                aria-hidden="true"
+              >
+                - - - - -
+              </span>
+              <div class="leading-[1.2] sm:leading-normal text-[#871521] font-futura mb-2">
+                <span style="font-size: 17px">📅 Rendez vous le</span><br />
+                <b style="font-size: 15px">20 Septembre 2025 à 19H00</b><br />
+                <b style="font-size: 15px">à CHINE MASSENA</b><br />
+                <span style="font-size: 12.5px">13 Pl. de Vénétie, 75013 Paris</span>
+              </div>
+              <div class="text-[#871521] text-[12px] font-futura">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-[#CE412D] transition-colors duration-150 no-underline"
+                  style="cursor: pointer; text-decoration: none"
                 >
-                  🎁 Envie de faire plaisir ?<br />
+                  🎁 Envie de faire plaisir sans se casser la tête ?<br />
                   Ça tombe bien : on a créé une cagnotte !
-                </div>
+                </a>
               </div>
             </div>
           </div>
-          <!-- ...existing code... --><!-- ...existing code... -->
         </div>
       </div>
     </div>
     <script>
+      /**
+       * Animation and invitation logic for the wedding envelope.
+       * Handles petals, fireworks, envelope opening, and guest rendering.
+       */
+
       // DOM Elements
       const envelopeContainer = document.querySelector(".envelope-container");
       const envelope = document.getElementById("envelope");
@@ -151,10 +182,17 @@
       const PARTICLES_PER_BURST = 16;
       const FIREWORK_COLORS = ["#fbbf24", "#e11d48", "#f472b6", "#38bdf8", "#34d399", "#f59e42"];
 
-      // Utility: Random item from array
+      /**
+       * Returns a random item from an array.
+       * @param {Array} arr
+       * @returns {*}
+       */
       const getRandomArrayItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-      // --------- PETALS ---------
+      /**
+       * Creates a petal DOM element with random style.
+       * @returns {HTMLDivElement}
+       */
       const createPetalElement = () => {
         const colorClass = getRandomArrayItem(PETAL_COLORS);
         const rotate = Math.floor(Math.random() * 360);
@@ -167,6 +205,10 @@
         return petal;
       };
 
+      /**
+       * Animates a petal falling down the screen.
+       * @param {HTMLDivElement} petal
+       */
       const animatePetal = (petal) => {
         const startLeft = Math.random() * 100;
         const endLeft = startLeft + (Math.random() - 0.5) * 8;
@@ -203,6 +245,9 @@
         requestAnimationFrame(animate);
       };
 
+      /**
+       * Launches a loop of falling petals.
+       */
       const launchPetalsLoop = () => {
         if (!isPetalLooping) return;
         for (let i = 0; i < PETAL_COUNT; i++) {
@@ -215,7 +260,11 @@
         setTimeout(launchPetalsLoop, 2000);
       };
 
-      // --------- FIREWORKS ---------
+      /**
+       * Creates a firework particle DOM element.
+       * @param {string} color
+       * @returns {HTMLDivElement}
+       */
       const createFireworkParticle = (color) => {
         const size = 12 + Math.random() * 8;
         const div = document.createElement("div");
@@ -230,6 +279,9 @@
         return div;
       };
 
+      /**
+       * Launches the fireworks animation.
+       */
       const launchFireworksAnimation = () => {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -279,7 +331,9 @@
         }
       };
 
-      // --------- ENVELOPE OPEN HANDLER ---------
+      /**
+       * Handles the opening of the envelope (animation, petals, fireworks).
+       */
       const handleOpenEnvelope = () => {
         if (isOpen) return;
         envelopeContainer.classList.add("open");
@@ -295,6 +349,10 @@
         }, 700);
       };
 
+      /**
+       * Handles keyboard accessibility for opening the envelope.
+       * @param {KeyboardEvent} event
+       */
       const handleEnvelopeKeyDown = (event) => {
         if (isOpen) return;
         if (event.key === "Enter" || event.key === " ") {
@@ -306,7 +364,7 @@
       envelopeContainer.addEventListener("click", handleOpenEnvelope);
       envelopeContainer.addEventListener("keydown", handleEnvelopeKeyDown);
 
-      // Flap open transform (moved from CSS to JS for Tailwind-only static)
+      // Observe envelope open state to animate flap
       const observer = new MutationObserver(() => {
         if (envelopeContainer.classList.contains("open")) {
           flap.style.transform = "rotateX(-140deg)";
@@ -318,7 +376,10 @@
       });
       observer.observe(envelopeContainer, { attributes: true, attributeFilter: ["class"] });
 
-      // --------- INVITATION GUESTS DYNAMIC RENDERING ---------
+      /**
+       * Renders the guest list from the URL parameter "invitation".
+       * Handles formatting for 1, 2, or more guests.
+       */
       const renderGuestList = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const invitationParam = urlParams.get("invitation");
@@ -342,17 +403,13 @@
 
         guestsList.innerHTML = guests
           .map((guest, idx) => {
-            // Ajoute une virgule après chaque prénom sauf le dernier et l'avant-dernier
             if (guests.length === 1) {
               return `<span class="inline font-medium text-[#CE412D]">${guest}</span>`;
             } else if (idx === guests.length - 1) {
-              // Dernier prénom, précédé de "et"
               return `<span class="inline font-medium text-[#CE412D]">et ${guest}</span>`;
             } else if (idx === guests.length - 2) {
-              // Avant-dernier prénom, suivi d'un espace
               return `<span class="inline font-medium text-[#CE412D]">${guest} </span>`;
             } else {
-              // Prénoms du début, suivis d'une virgule
               return `<span class="inline font-medium text-[#CE412D]">${guest}, </span>`;
             }
           })
@@ -360,7 +417,11 @@
         invitationBlock.style.display = "";
       };
 
+      // Initial rendering and automatic envelope opening after 2 seconds
       renderGuestList();
+      setTimeout(() => {
+        handleOpenEnvelope();
+      }, 2000);
     </script>
   </body>
 </html>
